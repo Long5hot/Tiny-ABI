@@ -71,8 +71,17 @@ _Unwind_Reason_Code __gxx_personality_v0 (
                      int version, _Unwind_Action actions, uint64_t exceptionClass,
                      _Unwind_Exception* unwind_exception, _Unwind_Context* context)
 {
-    printf("Personality function FTW!\n");
+    if (actions & _UA_SEARCH_PHASE)
+    {
+        printf("Personality function, lookup phase\n");
+        return _URC_HANDLER_FOUND;
+    } else if (actions & _UA_CLEANUP_PHASE) {
+        printf("Personality function, cleanup\n");
+        return _URC_INSTALL_CONTEXT;
+    } else {
+        printf("Personality function, error\n");
+        return _URC_FATAL_PHASE1_ERROR;
+    }
 }
-
 
 }
