@@ -12,7 +12,7 @@ void raise() {
 void try_but_dont_catch() {
     try {
         raise();
-    } catch(Fake_Exception&) {
+    } catch(Fake_Exception &) {
         printf("Running try_but_dont_catch::catch(Fake_Exception)\n");
     }
 
