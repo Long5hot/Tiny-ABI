@@ -33,4 +33,9 @@ void __cxa_throw(
     exit(0);
 }
 
+void __gxx_personality_v0()
+{
+    printf("Personality function FTW\n");
+}
+
 } // extern "C"
